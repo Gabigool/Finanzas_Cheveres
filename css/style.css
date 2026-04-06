@@ -1,0 +1,429 @@
+/* =============================================
+   FINANCIAS CHEVERES — Soft Pastel Theme
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+/* ─── Variables ─── */
+:root {
+  --bg-base:       #fdf6f0;
+  --bg-surface:    #ffffff;
+  --bg-blush:      #fff0f3;
+  --bg-mint:       #f0faf5;
+  --bg-lavender:   #f4f0ff;
+  --bg-sky:        #f0f6ff;
+
+  --accent-rose:   #f2a7b8;
+  --accent-mint:   #7dd4aa;
+  --accent-peach:  #ffb38a;
+  --accent-lilac:  #b8a4e8;
+  --accent-sky:    #85c1e9;
+  --accent-butter: #f9e07a;
+
+  --border-soft:   rgba(200, 185, 210, 0.35);
+
+  --text-dark:     #3d2f3f;
+  --text-mid:      #7a6880;
+  --text-light:    #b0a0b8;
+
+  --shadow-card:   0 8px 40px rgba(180, 140, 170, 0.14);
+  --shadow-hover:  0 12px 48px rgba(180, 140, 170, 0.22);
+  --shadow-soft:   0 4px 24px rgba(180, 140, 170, 0.10);
+
+  --radius-sm:  10px;
+  --radius-md:  16px;
+  --radius-lg:  22px;
+  --radius-xl:  30px;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── Body ─── */
+body {
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 0% 0%,    rgba(242,167,184,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 100% 100%, rgba(184,164,232,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 20%,  rgba(125,212,170,0.10) 0%, transparent 50%);
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 44px 20px 90px;
+}
+
+/* Subtle dot pattern */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(180,140,170,0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── H1 ─── */
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(2rem, 6vw, 2.9rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  text-align: left;
+  margin-bottom: 44px;
+  line-height: 1.15;
+}
+
+h1::before {
+  content: '✦ ';
+  color: var(--accent-rose);
+  animation: twinkle 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-rose), var(--accent-lilac));
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50%       { transform: scale(1.2) rotate(20deg); opacity: 0.7; }
+}
+
+/* ─── Cards ─── */
+.card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 28px 30px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.card:nth-child(1) { animation-delay: 0.00s; }
+.card:nth-child(2) { animation-delay: 0.07s; }
+.card:nth-child(3) { animation-delay: 0.14s; }
+.card:nth-child(4) { animation-delay: 0.21s; }
+.card:nth-child(5) { animation-delay: 0.28s; }
+
+.card:nth-child(1)::before { background: linear-gradient(90deg, var(--accent-rose), var(--accent-peach)); }
+.card:nth-child(2)::before { background: linear-gradient(90deg, var(--accent-mint), var(--accent-sky)); }
+.card:nth-child(3)::before { background: linear-gradient(90deg, var(--accent-butter), var(--accent-peach)); }
+.card:nth-child(4)::before { background: linear-gradient(90deg, var(--accent-lilac), var(--accent-rose)); }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(242, 167, 184, 0.4);
+}
+
+.card-body { padding: 0; }
+
+/* ─── Card Titles ─── */
+.card-title,
+h5.card-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── Inputs ─── */
+.form-control,
+input.form-control,
+select.form-control {
+  background: var(--bg-base) !important;
+  border: 1.5px solid var(--border-soft) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-dark) !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  width: 100% !important;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-light) !important;
+  font-weight: 500 !important;
+}
+
+.form-control:focus {
+  outline: none !important;
+  border-color: var(--accent-rose) !important;
+  box-shadow: 0 0 0 4px rgba(242,167,184,0.2) !important;
+  background: #fff !important;
+}
+
+select.form-control {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0a0b8' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
+}
+
+select.form-control option {
+  background: #fff;
+  color: var(--text-dark);
+}
+
+/* ─── Input Group ─── */
+.input-group {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.input-group .form-control {
+  flex: 1;
+  border-radius: var(--radius-md) !important;
+}
+
+.input-group-append {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* ─── Form Group ─── */
+.form-group { margin-bottom: 14px; }
+
+/* ─── Buttons ─── */
+.btn {
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: 13px 24px !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  white-space: nowrap !important;
+}
+
+.btn:active { transform: scale(0.95) !important; }
+
+/* Guardar */
+.btn-primary {
+  background: var(--bg-blush) !important;
+  color: #c4607a !important;
+  border: 1.5px solid var(--accent-rose) !important;
+}
+
+.btn-primary:hover {
+  background: var(--accent-rose) !important;
+  color: #fff !important;
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 6px 20px rgba(242,167,184,0.45) !important;
+}
+
+/* Agregar */
+.btn-success {
+  background: linear-gradient(135deg, #96e8c0 0%, #7dd4aa 100%) !important;
+  color: #2a6b50 !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(125,212,170,0.35) !important;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #a8eece 0%, #8de0b8 100%) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 28px rgba(125,212,170,0.5) !important;
+  color: #1e5a40 !important;
+}
+
+.btn-success.btn-block,
+.btn-block {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+  border-radius: var(--radius-md) !important;
+  padding: 14px 22px !important;
+}
+
+/* ─── Summary Rows ─── */
+.card-body p {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-base);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+}
+
+.card-body p:last-of-type { margin-bottom: 20px; }
+
+.card-body p strong {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+#presupuestoActual { color: #8b6bc8; }
+#totalGastado      { color: #d4814a; }
+#disponible        { color: #3a9e78; }
+
+.mt-2 { margin-top: 12px !important; }
+
+/* ─── Canvas ─── */
+#grafico {
+  margin-top: 8px;
+  border-radius: var(--radius-md);
+  max-height: 150px;
+}
+
+/* ─── Expense List ─── */
+.list-group {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#listaGastos .list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 15px 18px;
+  gap: 12px;
+  border-left: 4px solid var(--accent-rose);
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+#listaGastos .list-group-item:nth-child(2n) { border-left-color: var(--accent-mint); }
+#listaGastos .list-group-item:nth-child(3n) { border-left-color: var(--accent-lilac); }
+#listaGastos .list-group-item:nth-child(4n) { border-left-color: var(--accent-peach); }
+#listaGastos .list-group-item:nth-child(5n) { border-left-color: var(--accent-sky); }
+
+#listaGastos .list-group-item:hover {
+  transform: translateX(5px) scale(1.01);
+  box-shadow: var(--shadow-soft);
+  background: var(--bg-blush);
+}
+
+/* ─── Category Badge ─── */
+.badge-categoria {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--bg-lavender);
+  border: 1px solid rgba(184,164,232,0.4);
+  color: #7a60c0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Delete Button ─── */
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  flex-shrink: 0;
+}
+
+.btn-eliminar:hover {
+  background: rgba(255,120,120,0.12);
+  color: #e07070;
+  transform: scale(1.25) rotate(10deg);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--accent-rose); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-lilac); }
+
+/* ─── Animations ─── */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.94) translateY(14px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* ─── Bootstrap overrides ─── */
+.container.p-3 { padding: 0 !important; }
+.mb-4          { margin-bottom: 20px !important; }
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  body { padding: 24px 14px 70px; }
+  h1   { font-size: 1.85rem; margin-bottom: 32px; }
+  .card { padding: 22px 18px; border-radius: var(--radius-lg); }
+  .input-group { flex-direction: column; }
+  .btn { width: 100% !important; }
+}
+
+/* ─── Mensaje de error ───────────────────────────────────────────────────── */
+.error-msg {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}

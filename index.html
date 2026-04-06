@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Finanzas Chéveres</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="container p-3">
+
+  <h1 class="mb-4">Finanzas Chéveres</h1>
+
+  <!-- Sección: Presupuesto -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Presupuesto mensual</h5>
+      <div class="input-group">
+        <input type="text" id="presupuesto" class="form-control" placeholder="Ingresa tu presupuesto mensual" />
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="btnPresupuesto">Guardar</button>
+        </div>
+      </div>
+      <p class="mt-2">Presupuesto actual: <strong id="presupuestoActual">$0</strong></p>
+    </div>
+  </div>
+
+  <!-- Sección: Registrar gasto -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Registrar gasto</h5>
+      <div class="form-group">
+        <input type="text" id="descripcion" class="form-control" placeholder="Descripción del gasto" />
+      </div>
+      <div class="form-group">
+        <input type="text" id="monto" class="form-control" placeholder="Monto ($)" />
+      </div>
+      <div class="form-group">
+        <select id="categoria" class="form-control">
+          <option value="">-- Selecciona categoría --</option>
+          <option value="Comida">🍔 Comida</option>
+          <option value="Transporte">🚌 Transporte</option>
+          <option value="Ocio">🎮 Ocio</option>
+          <option value="Salud">💊 Salud</option>
+          <option value="Educación">📚 Educación</option>
+          <option value="Otros">📦 Otros</option>
+        </select>
+      </div>
+      <input type="date" id="mesGasto" class="form-control" />
+      <div id="errorGasto" style="display:none" class="error-msg">
+        ⚠️ Por favor completa todos los campos correctamente
+      </div>
+
+      <button class="btn btn-success btn-block" id="btnAgregar">Agregar gasto</button>
+    </div>
+  </div>
+
+  <!-- Sección: Resumen -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Resumen mensual</h5>
+      <input type="month" id="mesFiltro" class="form-control mb-3" />
+      <p>Total gastado: <strong id="totalGastado">$0</strong></p>
+      <p>Disponible: <strong id="disponible">$0</strong></p>
+      <canvas id="grafico" height="120"></canvas>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Exportar reporte</h5>
+      <button class="btn btn-primary btn-block" id="btnExportarPDF">
+        📄 Descargar reporte PDF
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Sección: Lista de gastos -->
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Gastos registrados</h5>
+      <ul id="listaGastos" class="list-group"></ul>
+    </div>
+  </div>
+
+  <div id="graficoPDF" style="position:absolute; left:-9999px; top:-9999px;"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
