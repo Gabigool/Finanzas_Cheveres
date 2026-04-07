@@ -37,13 +37,6 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Vista móvil de Finanzas Chéveres"
-    },
-    {
-      "src": "img/screenshot-desktop.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Vista escritorio de Finanzas Chéveres"
     }
   ],
   "related_applications": [],
