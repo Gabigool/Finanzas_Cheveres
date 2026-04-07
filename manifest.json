@@ -2,9 +2,10 @@
   "name": "Finanzas Chéveres",
   "short_name": "Finanzas",
   "description": "Registra y controla tus gastos mensuales de forma fácil y visual",
-  "lang": "es",
+  "lang": "es-CO",
   "dir": "ltr",
-  "start_url": "./index.html",
+  "id": "./",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
@@ -17,30 +18,19 @@
     { "src": "img/icons/icon-128x128.png", "sizes": "128x128", "type": "image/png" },
     { "src": "img/icons/icon-144x144.png", "sizes": "144x144", "type": "image/png" },
     { "src": "img/icons/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
-    { "src": "img/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
     { "src": "img/icons/icon-384x384.png", "sizes": "384x384", "type": "image/png" },
-    { "src": "img/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "img/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "shortcuts": [
     {
       "name": "Registrar gasto",
       "short_name": "Nuevo gasto",
       "description": "Ir directamente a registrar un nuevo gasto",
-      "url": "./index.html",
+      "url": "./",
       "icons": [{ "src": "img/icons/icon-192x192.png", "sizes": "192x192" }]
     }
   ],
-  "screenshots": [
-    {
-      "src": "img/screenshot-mobile.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Vista móvil de Finanzas Chéveres"
-    }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false,
   "launch_handler": {
     "client_mode": "focus-existing"
   }

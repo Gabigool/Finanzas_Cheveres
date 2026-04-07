@@ -1,17 +1,17 @@
 // ─── Nombre del caché ───────────────────────────────────────────────────────
-const CACHE_NAME = 'gasto-tracker-v1';
+const CACHE_NAME = 'gasto-tracker-v2';
 
 // ─── Archivos del App Shell a cachear ──────────────────────────────────────
 const ASSETS_TO_CACHE = [
-  'index.html',
-  'css/style.css',
-  'pages/offline.html',
-  'js/app.js',
-  'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css',
-  'https://cdn.jsdelivr.net/npm/chart.js',
-  'https://cdn.jsdelivr.net/npm/d3@7',
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
-
+  './',
+  './index.html',
+  './manifest.json',
+  './css/style.css',
+  './pages/offline.html',
+  './js/app.js',
+  './img/favicon.ico',
+  './img/icons/icon-192x192.png',
+  './img/icons/icon-512x512.png',
 ];
 
 // ─── Evento INSTALL: cachear App Shell ─────────────────────────────────────
@@ -23,7 +23,10 @@ self.addEventListener('install', event => {
         console.log('[SW] Cacheando App Shell');
         return cache.addAll(ASSETS_TO_CACHE);
       })
-      .then(() => console.log('[SW] App Shell cacheado correctamente'))
+      .then(() => {
+        console.log('[SW] App Shell cacheado correctamente');
+        return self.skipWaiting();
+      })
       .catch(err => console.error('[SW] Error al cachear App Shell:', err))
   );
 });
@@ -52,6 +55,10 @@ self.addEventListener('activate', event => {
 
 // ─── Evento FETCH: interceptar peticiones ──────────────────────────────────
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(cachedResponse => {
@@ -65,7 +72,8 @@ self.addEventListener('fetch', event => {
         return fetch(event.request)
           .then(networkResponse => {
             // Verifica que la respuesta sea válida
-            if (!networkResponse || networkResponse.status !== 200) {
+            // Nota: para recursos cross-origin el status puede ser 0 (opaque).
+            if (!networkResponse || (networkResponse.status !== 200 && networkResponse.status !== 0)) {
               return networkResponse;
             }
             // Guarda una copia en caché para futuras visitas
